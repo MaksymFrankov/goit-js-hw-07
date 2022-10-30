@@ -13,7 +13,7 @@ function createGalleryMarkup(galleryItems) {
             <a class="gallery__link" href="${original}">
                 <img class="gallery__image"
                     src="${preview}"
-                        data-source="large-image.jpg"
+                        data-source="${original}"
                             alt="${description}" />
   </a>
 </div>       
@@ -34,7 +34,7 @@ const instance = basicLightbox.create(`
 function onClickCard(evt) {
   evt.preventDefault();
 
-  if (!evt.target.classList.contains("gallery__image")) {
+  if ( !evt.target.classList.contains("gallery__image")) {
     return;
   }
 
