@@ -1,3 +1,4 @@
+
 import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector('.gallery');
@@ -7,8 +8,8 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup)
 
 
 function createGalleryMarkup(galleryItems) {
-    return galleryItems.map(({ preview, original, description }) => {
-        return `
+  return galleryItems.map(({ preview, original, description }) => {
+    return `
         <div class="gallery__item">
             <a class="gallery__link" href="${original}">
                 <img class="gallery__image"
@@ -18,18 +19,18 @@ function createGalleryMarkup(galleryItems) {
   </a>
 </div>       
 `;
-    }).join('')
+  }).join('')
 }
 
 
 const instance = basicLightbox.create(`
   <div class="content">
-        <img
+        <img class="image_light"
           src=""
           alt="full-image"
         />
     </div>
-  `);
+  `, { onClose: (instance) => { document.removeEventListener("keydown", onEscKeyPress); return true; } });
 galleryContainer.addEventListener("click", onClickCard);
 function onClickCard(evt) {
   evt.preventDefault();
@@ -42,17 +43,23 @@ function onClickCard(evt) {
   const loadImage = instance.element().querySelector("img");
   loadImage.src = selectedImg;
 
+  
+
   instance.show();
-  window.addEventListener("keydown", onEscKeyPress);
+  let light = document.querySelector(".basicLightbox")
+  light.addEventListener("click", CloseModal);
+  document.addEventListener("keydown", onEscKeyPress);
+
 }
+
 
 function onEscKeyPress(event) {
   if (event.code === "Escape") {
-    onCloseModal();
+    CloseModal();
   }
 }
 
-function onCloseModal() {
+function CloseModal() {
   instance.close();
-  window.removeEventListener("keydown", onEscKeyPress);
+  document.removeEventListener("keydown", onEscKeyPress);
 }
