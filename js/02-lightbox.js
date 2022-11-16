@@ -21,3 +21,7 @@ new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionsDelay: 250,
 });
+
+
+  
+ 

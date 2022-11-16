@@ -20,7 +20,7 @@ function createGalleryMarkup(galleryItems) {
 `;
     }).join('')
 }
-galleryContainer.addEventListener("click", onClickCard);
+
 
 const instance = basicLightbox.create(`
   <div class="content">
@@ -30,7 +30,7 @@ const instance = basicLightbox.create(`
         />
     </div>
   `);
-
+galleryContainer.addEventListener("click", onClickCard);
 function onClickCard(evt) {
   evt.preventDefault();
 
