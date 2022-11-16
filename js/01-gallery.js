@@ -30,7 +30,7 @@ const instance = basicLightbox.create(`
           alt="full-image"
         />
     </div>
-  `, { onClose: (instance) => { document.removeEventListener("keydown", onEscKeyPress); return true; } });
+  `, { onClose: (instance) => { document.removeEventListener("keydown", onEscKeyPress); } });
 galleryContainer.addEventListener("click", onClickCard);
 function onClickCard(evt) {
   evt.preventDefault();
@@ -61,5 +61,5 @@ function onEscKeyPress(event) {
 
 function CloseModal() {
   instance.close();
-  document.removeEventListener("keydown", onEscKeyPress);
+  // document.removeEventListener("keydown", onEscKeyPress);
 }
